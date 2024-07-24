@@ -102,6 +102,13 @@ def cocostuff_classes():
     ]
 
 
+def buildingseg_classes():
+    """BuildingSeg class names for external use."""
+    return [
+        'background', 'building'
+    ]
+
+
 def loveda_classes():
     """LoveDA class names for external use."""
     return [
@@ -387,6 +394,11 @@ def cocostuff_palette():
             [64, 160, 64], [64, 64, 0]]
 
 
+def buildingseg_palette():
+    """BuildingSeg palette for external use."""
+    return [[0, 0, 0], [255, 255, 255]]
+
+
 def loveda_palette():
     """LoveDA palette for external use."""
     return [[255, 255, 255], [255, 0, 0], [255, 255, 0], [0, 0, 255],
@@ -493,6 +505,7 @@ dataset_aliases = {
     'ade': ['ade', 'ade20k'],
     'voc': ['voc', 'pascal_voc', 'voc12', 'voc12aug'],
     'pcontext': ['pcontext', 'pascal_context', 'voc2010'],
+    'buildingseg': ['buildingseg'],
     'loveda': ['loveda'],
     'potsdam': ['potsdam'],
     'vaihingen': ['vaihingen'],
