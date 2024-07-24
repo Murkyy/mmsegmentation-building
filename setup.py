@@ -167,15 +167,15 @@ def add_mim_extension():
 if __name__ == '__main__':
     add_mim_extension()
     setup(
-        name='mmsegmentation',
+        name='mmsegmentation-building',
         version=get_version(),
-        description='Open MMLab Semantic Segmentation Toolbox and Benchmark',
+        description='Open MMLab Semantic Segmentation Toolbox and Benchmark, forked for pleiade RGB image segmentation',
         long_description=readme(),
         long_description_content_type='text/markdown',
-        author='MMSegmentation Contributors',
-        author_email='openmmlab@gmail.com',
+        author='Murkyy',
+        author_email='',
         keywords='computer vision, semantic segmentation',
-        url='https://github.com/open-mmlab/mmsegmentation',
+        url='https://github.com/Murkyy/mmsegmentation-building',
         packages=find_packages(exclude=('configs', 'tools', 'demo')),
         include_package_data=True,
         classifiers=[
