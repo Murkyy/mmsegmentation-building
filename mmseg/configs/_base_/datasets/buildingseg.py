@@ -1,5 +1,5 @@
 # dataset settings
-dataset_type = 'BuildingSeg'
+dataset_type = 'BuildingSegDataset'
 data_root = 'data/buildingseg/'
 crop_size = (512, 512)
 train_pipeline = [
