@@ -46,11 +46,35 @@ class MMsegHandler(BaseHandler):
         results = [inference_model(self.model, img) for img in data]
         return results
 
+    # def postprocess(self, data):
+    #     output = []
+
+    #     for image_result in data:
+    #         _, buffer = cv2.imencode('.png', image_result[0].astype('uint8'))
+    #         content = buffer.tobytes()
+    #         output.append(content)
+    #     return output
+
     def postprocess(self, data):
         output = []
 
         for image_result in data:
-            _, buffer = cv2.imencode('.png', image_result[0].astype('uint8'))
+            # Access the segmentation mask data
+            seg_mask = image_result.pred_sem_seg.data
+
+            # Convert to numpy array, move to CPU if necessary
+            seg_mask = seg_mask.cpu().numpy()
+
+            # The seg_mask is already in the range [0, 1], so we need to scale it to [0, 255]
+            seg_mask = (seg_mask * 255).astype('uint8')
+
+            # If the mask is 3D (has a channel dimension), take the first channel
+            if seg_mask.ndim == 3:
+                seg_mask = seg_mask[0]
+
+            # Encode the mask as a PNG image
+            _, buffer = cv2.imencode('.png', seg_mask)
             content = buffer.tobytes()
             output.append(content)
+
         return output
